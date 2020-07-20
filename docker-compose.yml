@@ -1,0 +1,7 @@
+version: '2'
+services:
+  fe-node:
+    build: 
+      context: .
+      dockerfile: dockerfile
+    image: fe-node
