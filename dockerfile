@@ -2,7 +2,6 @@ FROM centos
 ARG name=fe
 #RUN rm -rf /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-AppStream.repo
 COPY yum.repos.d/* /etc/yum.repos.d/
-ENV LC_ALL=C
 RUN dnf clean all \
     && dnf makecache \
     && curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash \
@@ -15,8 +14,4 @@ RUN dnf clean all \
     && cnpm install -g nrm \
     && nrm add ek_fe http://172.17.20.156:4873/ \
     && yum install -y svn \
-    && yum install -y git \
-    && yum install -y make gcc gcc-c++ python2 \
-    && npm i yarn -g \
-    && nrm use ek_fe \
-    && npm i ek-cli ek-npm -g
+    && yum install -y git
